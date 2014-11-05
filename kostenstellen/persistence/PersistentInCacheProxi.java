@@ -12,10 +12,110 @@ public abstract class PersistentInCacheProxi extends PersistentRoot {
 		
 	  private static ICProxiFactory [] getTheICProxiFactories(){
 		if (iCProxiFactories == null){
-			iCProxiFactories = new ICProxiFactory[8];
+			iCProxiFactories = new ICProxiFactory[40];
+        iCProxiFactories[8] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new CommandExecuterICProxi(objectId);
+            }
+        };
+        iCProxiFactories[9] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new SubjICProxi(objectId);
+            }
+        };
+        iCProxiFactories[11] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new TransaktionICProxi(objectId);
+            }
+        };
+        iCProxiFactories[12] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new ErzeugeTransaktionCommandICProxi(objectId);
+            }
+        };
+        iCProxiFactories[13] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new FindeKontoCommandICProxi(objectId);
+            }
+        };
+        iCProxiFactories[14] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new AllgemeineKostenICProxi(objectId);
+            }
+        };
         iCProxiFactories[0] = new ICProxiFactory(){
             PersistentInCacheProxi create(long objectId){
                 return new ErrorDisplayICProxi(objectId);
+            }
+        };
+        iCProxiFactories[15] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new TransFacdeTransaktionsICProxi(objectId);
+            }
+        };
+        iCProxiFactories[16] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new ServerICProxi(objectId);
+            }
+        };
+        iCProxiFactories[17] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new TransferICProxi(objectId);
+            }
+        };
+        iCProxiFactories[18] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new ErzeugeKontoCommandICProxi(objectId);
+            }
+        };
+        iCProxiFactories[19] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new BucheKontoCommandICProxi(objectId);
+            }
+        };
+        iCProxiFactories[20] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new ArtenManagerICProxi(objectId);
+            }
+        };
+        iCProxiFactories[21] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new ReiseKostenICProxi(objectId);
+            }
+        };
+        iCProxiFactories[22] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new CommandCoordinatorICProxi(objectId);
+            }
+        };
+        iCProxiFactories[23] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new CommonDateICProxi(objectId);
+            }
+        };
+        iCProxiFactories[25] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new KontoICProxi(objectId);
+            }
+        };
+        iCProxiFactories[26] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new KontoFcdICProxi(objectId);
+            }
+        };
+        iCProxiFactories[27] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new KostenArtWurzelICProxi(objectId);
+            }
+        };
+        iCProxiFactories[28] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new TransFacdeICProxi(objectId);
+            }
+        };
+        iCProxiFactories[29] = new ICProxiFactory(){
+            PersistentInCacheProxi create(long objectId){
+                return new LohnKostenICProxi(objectId);
             }
         };
 		}

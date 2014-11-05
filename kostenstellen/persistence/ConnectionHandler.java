@@ -104,7 +104,29 @@ public class ConnectionHandler {
 	protected Connection con;
 	private String name;
 
+    public CommandExecuterFacade theCommandExecuterFacade;
+    public SubjFacade theSubjFacade;
+    public AbstrakteKostenArtFacade theAbstrakteKostenArtFacade;
+    public TransaktionFacade theTransaktionFacade;
+    public ErzeugeTransaktionCommandFacade theErzeugeTransaktionCommandFacade;
+    public FindeKontoCommandFacade theFindeKontoCommandFacade;
+    public AllgemeineKostenFacade theAllgemeineKostenFacade;
     public ErrorDisplayFacade theErrorDisplayFacade;
+    public TransFacdeTransaktionsFacade theTransFacdeTransaktionsFacade;
+    public ServerFacade theServerFacade;
+    public TransferFacade theTransferFacade;
+    public ErzeugeKontoCommandFacade theErzeugeKontoCommandFacade;
+    public BucheKontoCommandFacade theBucheKontoCommandFacade;
+    public ArtenManagerFacade theArtenManagerFacade;
+    public ReiseKostenFacade theReiseKostenFacade;
+    public CommandCoordinatorFacade theCommandCoordinatorFacade;
+    public CommonDateFacade theCommonDateFacade;
+    public KonkreteKostenArtFacade theKonkreteKostenArtFacade;
+    public KontoFacade theKontoFacade;
+    public KontoFcdFacade theKontoFcdFacade;
+    public KostenArtWurzelFacade theKostenArtWurzelFacade;
+    public TransFacdeFacade theTransFacdeFacade;
+    public LohnKostenFacade theLohnKostenFacade;
 
 	protected ConnectionHandler(String name) throws PersistenceException {
 		this.name = name;
@@ -126,7 +148,29 @@ public class ConnectionHandler {
 			CallableStatement callable = this.con.prepareCall("Begin " + this.schemaName + ".ClassFacade.initialize; end;");
 			callable.execute();
 			callable.close();
+            this.theCommandExecuterFacade= new CommandExecuterFacade(this.schemaName, this.con);
+            this.theSubjFacade= new SubjFacade(this.schemaName, this.con);
+            this.theAbstrakteKostenArtFacade= new AbstrakteKostenArtFacade(this.schemaName, this.con);
+            this.theTransaktionFacade= new TransaktionFacade(this.schemaName, this.con);
+            this.theErzeugeTransaktionCommandFacade= new ErzeugeTransaktionCommandFacade(this.schemaName, this.con);
+            this.theFindeKontoCommandFacade= new FindeKontoCommandFacade(this.schemaName, this.con);
+            this.theAllgemeineKostenFacade= new AllgemeineKostenFacade(this.schemaName, this.con);
             this.theErrorDisplayFacade= new ErrorDisplayFacade();
+            this.theTransFacdeTransaktionsFacade= new TransFacdeTransaktionsFacade(this.schemaName, this.con);
+            this.theServerFacade= new ServerFacade(this.schemaName, this.con);
+            this.theTransferFacade= new TransferFacade(this.schemaName, this.con);
+            this.theErzeugeKontoCommandFacade= new ErzeugeKontoCommandFacade(this.schemaName, this.con);
+            this.theBucheKontoCommandFacade= new BucheKontoCommandFacade(this.schemaName, this.con);
+            this.theArtenManagerFacade= new ArtenManagerFacade(this.schemaName, this.con);
+            this.theReiseKostenFacade= new ReiseKostenFacade(this.schemaName, this.con);
+            this.theCommandCoordinatorFacade= new CommandCoordinatorFacade(this.schemaName, this.con);
+            this.theCommonDateFacade= new CommonDateFacade(this.schemaName, this.con);
+            this.theKonkreteKostenArtFacade= new KonkreteKostenArtFacade(this.schemaName, this.con);
+            this.theKontoFacade= new KontoFacade(this.schemaName, this.con);
+            this.theKontoFcdFacade= new KontoFcdFacade(this.schemaName, this.con);
+            this.theKostenArtWurzelFacade= new KostenArtWurzelFacade(this.schemaName, this.con);
+            this.theTransFacdeFacade= new TransFacdeFacade(this.schemaName, this.con);
+            this.theLohnKostenFacade= new LohnKostenFacade(this.schemaName, this.con);
 		} catch (SQLException sqlExc) {
 			throw new PersistenceException(sqlExc.getMessage(), sqlExc.getErrorCode());
 		}

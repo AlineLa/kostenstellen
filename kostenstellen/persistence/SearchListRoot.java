@@ -37,8 +37,8 @@ public abstract class SearchListRoot<T extends AbstractPersistentRoot> {
 	public void add (T entry) throws PersistenceException, UserException {
 		this.data.add(entry);
 	}
-	public void add(SearchListRoot<? extends T> list) throws PersistenceException, UserException{
-		java.util.Iterator<? extends T> entries = list.iterator();
+	public void add(SearchListRoot<T> list) throws PersistenceException, UserException{
+		java.util.Iterator<T> entries = list.iterator();
 		while (entries.hasNext()){
 			this.add(entries.next());
 		}
@@ -47,8 +47,8 @@ public abstract class SearchListRoot<T extends AbstractPersistentRoot> {
 		if (this.data.contains(entry)) return;
 		this.data.add(entry);
 	}
-	public void addUnique(SearchListRoot<? extends T> list) throws PersistenceException, UserException {
-		java.util.Iterator<? extends T> entries = list.iterator();
+	public void addUnique(SearchListRoot<T> list) throws PersistenceException, UserException {
+		java.util.Iterator<T> entries = list.iterator();
 		while (entries.hasNext()){
 			this.addUnique(entries.next());
 		}

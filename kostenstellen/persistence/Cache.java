@@ -260,7 +260,27 @@ public class Cache {
 	
 	private void initializeNumber2NameMap() {
 		this.number2NameMap = new Hashtable<Integer,String>();
-		this.number2NameMap.put(-101, "ErrorDisplay");	
+		this.number2NameMap.put(115, "AllgemeineKosten");
+		this.number2NameMap.put(121, "ArtenManager");
+		this.number2NameMap.put(120, "BucheKontoCommand");
+		this.number2NameMap.put(-123, "CommandCoordinator");
+		this.number2NameMap.put(-109, "CommandExecuter");
+		this.number2NameMap.put(124, "CommonDate");
+		this.number2NameMap.put(-101, "ErrorDisplay");
+		this.number2NameMap.put(119, "ErzeugeKontoCommand");
+		this.number2NameMap.put(113, "ErzeugeTransaktionCommand");
+		this.number2NameMap.put(114, "FindeKontoCommand");
+		this.number2NameMap.put(126, "Konto");
+		this.number2NameMap.put(127, "KontoFcd");
+		this.number2NameMap.put(128, "KostenArtWurzel");
+		this.number2NameMap.put(130, "LohnKosten");
+		this.number2NameMap.put(122, "ReiseKosten");
+		this.number2NameMap.put(-117, "Server");
+		this.number2NameMap.put(110, "Subj");
+		this.number2NameMap.put(129, "TransFacde");
+		this.number2NameMap.put(116, "TransFacdeTransaktions");
+		this.number2NameMap.put(112, "Transaktion");
+		this.number2NameMap.put(118, "Transfer");	
 	}
 	
 }

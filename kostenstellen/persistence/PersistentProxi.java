@@ -16,10 +16,110 @@ public abstract class PersistentProxi extends PersistentRoot implements Persiste
 	
   private static ListProxiFactory [] getTheListProxiFactories(){
 	if (listProxiFactories == null){
-		listProxiFactories = new ListProxiFactory[8];
+		listProxiFactories = new ListProxiFactory[40];
+        listProxiFactories[8] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new CommandExecuterListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[9] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new SubjListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[11] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new TransaktionListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[12] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new ErzeugeTransaktionCommandListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[13] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new FindeKontoCommandListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[14] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new AllgemeineKostenListEntryProxi(objectId, entryId);
+            }
+        };
         listProxiFactories[0] = new ListProxiFactory(){
             AbstractPersistentRoot create(long objectId, long entryId){
                 return new ErrorDisplayListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[15] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new TransFacdeTransaktionsListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[16] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new ServerListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[17] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new TransferListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[18] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new ErzeugeKontoCommandListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[19] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new BucheKontoCommandListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[20] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new ArtenManagerListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[21] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new ReiseKostenListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[22] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new CommandCoordinatorListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[23] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new CommonDateListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[25] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new KontoListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[26] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new KontoFcdListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[27] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new KostenArtWurzelListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[28] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new TransFacdeListEntryProxi(objectId, entryId);
+            }
+        };
+        listProxiFactories[29] = new ListProxiFactory(){
+            AbstractPersistentRoot create(long objectId, long entryId){
+                return new LohnKostenListEntryProxi(objectId, entryId);
             }
         };
 	}
@@ -27,10 +127,110 @@ public abstract class PersistentProxi extends PersistentRoot implements Persiste
   }
   private static ProxiFactory [] getTheProxiFactories(){
 	if (proxiFactories == null){
-		proxiFactories = new ProxiFactory [8];
+		proxiFactories = new ProxiFactory [40];
+        proxiFactories[8] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new CommandExecuterProxi(objectId);
+            }
+        };
+        proxiFactories[9] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new SubjProxi(objectId);
+            }
+        };
+        proxiFactories[11] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new TransaktionProxi(objectId);
+            }
+        };
+        proxiFactories[12] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new ErzeugeTransaktionCommandProxi(objectId);
+            }
+        };
+        proxiFactories[13] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new FindeKontoCommandProxi(objectId);
+            }
+        };
+        proxiFactories[14] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new AllgemeineKostenProxi(objectId);
+            }
+        };
         proxiFactories[0] = new ProxiFactory(){
             AbstractPersistentRoot create(long objectId){
                 return new ErrorDisplayProxi(objectId);
+            }
+        };
+        proxiFactories[15] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new TransFacdeTransaktionsProxi(objectId);
+            }
+        };
+        proxiFactories[16] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new ServerProxi(objectId);
+            }
+        };
+        proxiFactories[17] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new TransferProxi(objectId);
+            }
+        };
+        proxiFactories[18] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new ErzeugeKontoCommandProxi(objectId);
+            }
+        };
+        proxiFactories[19] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new BucheKontoCommandProxi(objectId);
+            }
+        };
+        proxiFactories[20] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new ArtenManagerProxi(objectId);
+            }
+        };
+        proxiFactories[21] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new ReiseKostenProxi(objectId);
+            }
+        };
+        proxiFactories[22] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new CommandCoordinatorProxi(objectId);
+            }
+        };
+        proxiFactories[23] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new CommonDateProxi(objectId);
+            }
+        };
+        proxiFactories[25] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new KontoProxi(objectId);
+            }
+        };
+        proxiFactories[26] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new KontoFcdProxi(objectId);
+            }
+        };
+        proxiFactories[27] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new KostenArtWurzelProxi(objectId);
+            }
+        };
+        proxiFactories[28] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new TransFacdeProxi(objectId);
+            }
+        };
+        proxiFactories[29] = new ProxiFactory(){
+            AbstractPersistentRoot create(long objectId){
+                return new LohnKostenProxi(objectId);
             }
         };
 	}
