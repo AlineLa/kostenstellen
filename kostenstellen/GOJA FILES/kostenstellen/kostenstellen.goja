@@ -1,3 +1,78 @@
-model kostenstellen{
+model kostenstellen {
+
+server Server {
+  	no-view ArtenManager arten;
+  	skip-view one-to-one (server-only myMastersVoice) KontoFcd manager;
+	skip-view one-to-one (server-only myTransaktionVoice) TransFacde transaktionManager; 
+  	void erzeugeKonto(String KontoID, Integer Kontostand, Integer Minimum, Integer Grenzwert);
+  	void schließeKonto();
+  	void findeKonto(String KontoID);
+	void bucheKonto(Konto vonKonto, Konto zuKonto, Integer Summe) throws MinimumException;
+	void erzeugeTransaktion(String KontoID);
+  	void hinzufügenTransfer(Transaktion transaktion, Konto vonKonto, Konto zuKonto, Integer Summe);
+  	void buchen(Transaktion transaktion) throws MinimumException;
+  	void reportErrors()throws MinimumException; 
+	
+}
+
+class Konto {
+	prior indexed String KontoID;
+  	prior Integer Grenzwert;
+  	prior Integer Kontostand;
+  	prior Integer Minimum; 
+  	event void credit (Integer Kontostand);
+  	event void debit (Integer Kontostand)throws MinimumException; 
+}
+
+class Transfer{
+  	Konto vonKonto;
+  	Konto zuKonto;
+  	Integer Summe;
+  	String KontoID;
+  	void bucheKonto() throws MinimumException;  
+}
+
+class Transaktion{
+  	Transfer ** transfers;
+  	active void bucheKonto() throws MinimumException; 
+}
+
+singleton ArtenManager {
+  	KonkreteKostenArt ** arten;
+ }
+class KontoFcd {
+	Konto** konten;
+   active void erzeugeKonto(String KontoID, Integer Kontostand, Integer Minimum, Integer Grenzwert) throws DoubleDefinition;
+ 	active void findeKonto(String KontoID);
+}
+
+class TransFacde{
+	observe Transaktion ** transaktions;
+	active void erzeugeTransaktion(String KontoID) throws DoubleDefinition; 
+}
+
+abstract class AbstrakteKostenArt##AbsKstnArt {}
+
+singleton KostenArtWurzel extends AbstrakteKostenArt {}
+
+abstract class KonkreteKostenArt##KnkrKstnArt extends AbstrakteKostenArt {
+  AbstrakteKostenArt speziellerAls;
+}
+
+/* UnterArt von KostenArtWurzel */
+singleton AllgemeineKosten extends KonkreteKostenArt {}
+
+/* UnterArt von AllgemeineKosten */
+singleton ReiseKosten extends KonkreteKostenArt {}
+
+/* UnterArt von AllgemeineKosten */
+singleton LohnKosten extends KonkreteKostenArt {}
+
+hierarchy TransferHierarchy;
+
+exception DoubleDefinition{}
+
+exception MinimumException{}
+
 
 }
