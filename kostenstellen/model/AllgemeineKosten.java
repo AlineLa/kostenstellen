@@ -195,7 +195,7 @@ public class AllgemeineKosten extends model.KonkreteKostenArt implements Persist
     }
     public void initializeOnCreation() 
 				throws PersistenceException{
-        //TODO: implement method: initializeOnCreation
+    	getThis().setSpeziellerAls(KostenArtWurzel.getTheKostenArtWurzel());   
         
     }
     public void initializeOnInstantiation() 

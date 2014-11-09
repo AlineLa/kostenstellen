@@ -195,8 +195,7 @@ public class ReiseKosten extends model.KonkreteKostenArt implements PersistentRe
     }
     public void initializeOnCreation() 
 				throws PersistenceException{
-        //TODO: implement method: initializeOnCreation
-        
+        getThis().setSpeziellerAls(AllgemeineKosten.getTheAllgemeineKosten());         
     }
     public void initializeOnInstantiation() 
 				throws PersistenceException{

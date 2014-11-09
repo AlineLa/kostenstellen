@@ -209,8 +209,9 @@ public class ArtenManager extends PersistentObject implements PersistentArtenMan
     }
     public void initializeOnCreation() 
 				throws PersistenceException{
-        //TODO: implement method: initializeOnCreation
-        
+    	  getThis().getArten().add(AllgemeineKosten.getTheAllgemeineKosten());
+          getThis().getArten().add(ReiseKosten.getTheReiseKosten());
+          getThis().getArten().add(LohnKosten.getTheLohnKosten());        
     }
     public void initializeOnInstantiation() 
 				throws PersistenceException{
