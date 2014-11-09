@@ -228,7 +228,11 @@ public class Transaktion extends PersistentObject implements PersistentTransakti
     
     public void bucheKonto() 
 				throws model.MinimumException, PersistenceException{
-        //TODO: implement method: bucheKonto
+    	 getThis().getTransfers().applyToAllException(new ProcdureException<PersistentTransfer, MinimumException>(){
+    	 public void doItTo(PersistentTransfer argument) throws PersistenceException, MinimumException {
+    					argument.bucheKonto();
+    				}    	
+    		    });
         
     }
     public void copyingPrivateUserAttributes(final Anything copy) 

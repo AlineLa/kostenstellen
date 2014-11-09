@@ -290,23 +290,21 @@ public class Konto extends PersistentObject implements PersistentKonto{
     
     public void copyingPrivateUserAttributes(final Anything copy) 
 				throws PersistenceException{
-        //TODO: implement method: copyingPrivateUserAttributes
-        
+                
     }
     public void creditImplementation(final long Kontostand) 
 				throws PersistenceException{
-        //TODO: implement method: creditImplementation
-        
+    	    	getThis().setKontostand(getThis().getKontostand() + Kontostand);
     }
     public void debitImplementation(final long Kontostand) 
 				throws model.MinimumException, PersistenceException{
-        //TODO: implement method: debitImplementation
-        
-    }
+    	long newBalance = getThis().getKontostand() - Kontostand;
+    	if (newBalance < getThis().getMinimum()) throw new MinimumException(newBalance + " unter dem Minimum!");
+    	getThis().setKontostand(newBalance);
+        }
     public void initializeOnCreation() 
 				throws PersistenceException{
-        //TODO: implement method: initializeOnCreation
-        
+    	getThis().setKontostand(0);        
     }
     public void initializeOnInstantiation() 
 				throws PersistenceException{

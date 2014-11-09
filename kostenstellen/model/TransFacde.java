@@ -257,12 +257,11 @@ public class TransFacde extends PersistentObject implements PersistentTransFacde
     
     public void copyingPrivateUserAttributes(final Anything copy) 
 				throws PersistenceException{
-        //TODO: implement method: copyingPrivateUserAttributes
-        
+               
     }
     public void erzeugeTransaktion(final String KontoID) 
 				throws model.DoubleDefinition, PersistenceException{
-        //TODO: implement method: erzeugeTransaktion
+    	 getThis().getTransaktions().add(Transaktion.createTransaktion());
         
     }
     public void initializeOnCreation() 
@@ -277,8 +276,7 @@ public class TransFacde extends PersistentObject implements PersistentTransFacde
     }
     public void transaktions_update(final model.meta.TransaktionMssgs event) 
 				throws PersistenceException{
-        //TODO: implement method: transaktions_update
-        
+    	getThis().getMyTransaktionVoice().signalChanged(true);        
     }
     
     

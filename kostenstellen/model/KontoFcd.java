@@ -250,8 +250,9 @@ public class KontoFcd extends PersistentObject implements PersistentKontoFcd{
     }
     public void erzeugeKonto(final String KontoID, final long Kontostand, final long Minimum, final long Grenzwert) 
 				throws model.DoubleDefinition, PersistenceException{
-        //TODO: implement method: erzeugeKonto
-        
+    	KontoSearchList existingIdentifier = Konto.getKontoByKontoID(KontoID);
+    	if ( existingIdentifier.getLength() > 0) throw new DoubleDefinition("KontoID existiert schon!");
+    	getThis().getKonten().add(Konto.createKonto(KontoID, Kontostand, Minimum, Grenzwert));           
     }
     public void findeKonto(final String KontoID) 
 				throws PersistenceException{

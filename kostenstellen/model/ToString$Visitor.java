@@ -35,13 +35,12 @@ public class ToString$Visitor extends model.visitor.ToString$Visitor {
 	@Override
 	public void handleTransfer(PersistentTransfer transfer)
 			throws PersistenceException {
-		// TODO Auto-generated method stub
-		
+		result = transfer.getVonKonto().getId() + " --> " + transfer.getZuKonto().getId() + " :  " + transfer.getSumme();		
 	}
 	@Override
 	public void handleServer(PersistentServer server)
 			throws PersistenceException {
-		// TODO Auto-generated method stub
+		result = "";
 		
 	}
 	@Override
@@ -59,13 +58,11 @@ public class ToString$Visitor extends model.visitor.ToString$Visitor {
 	@Override
 	public void handleKontoFcd(PersistentKontoFcd kontoFcd)
 			throws PersistenceException {
-		// TODO Auto-generated method stub
-		
+		result= "";		
 	}
 	@Override
 	public void handleKonto(PersistentKonto konto) throws PersistenceException {
-		// TODO Auto-generated method stub
-		
+		result = konto.getKontoID() + " " + konto.getKontostand();		
 	}
 	@Override
 	public void handleKostenArtWurzel(PersistentKostenArtWurzel kostenArtWurzel)
@@ -76,7 +73,7 @@ public class ToString$Visitor extends model.visitor.ToString$Visitor {
 	@Override
 	public void handleTransFacde(PersistentTransFacde transFacde)
 			throws PersistenceException {
-		// TODO Auto-generated method stub
+		result = "";
 		
 	}
 	@Override
